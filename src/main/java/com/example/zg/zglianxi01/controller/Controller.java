@@ -1,6 +1,5 @@
 package com.example.zg.zglianxi01.controller;
 
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author zsm
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class Controller {
     public void a(){
-
+        //这是一次新的springboot项目修改后的github提交
+        System.out.println("的确是这样的！！！");
     }
 }
+
