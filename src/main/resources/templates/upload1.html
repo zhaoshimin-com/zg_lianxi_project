@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--效果：在前段页面的text框输入一个id，点击按钮，发送ajax请求到数据库查询对应用户
+    数据返回，将用户信息显示在页面，实现局部刷新-->
+    <title>上传下载</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+        });
+        function method(){
+            var val = $("#userId").val();
+            $.ajax({
+                type:"GET",
+                url:"getUser",
+                // data:{"id":val}  //data参数时可选的，有多种写法，也可以直接在url参数拼接上去，例如：url："getUser?id="+val,
+                data:"id="+val,
+                async:true,//异步，默认开启，也就是$.ajax后面的代码不是跟$.ajax里面的代码一起执行
+                cache:true,//表示浏览器是否缓存被请求页面，默认是true
+                dataType:"json",//返回浏览器的数据类型，指定使json格式，前端这里才可以解析json数据
+                success:function(data){
+                    $("#name").text(data.name);
+                    $("#age").text(data.age);
+                },
+                error:function(){
+                    console.log("发生错误");
+                    alert("发生错误")
+                },
+                complete:function () {
+                  console.log("ajax请求完事，最终操作在这里完成")
+                }
+
+            });
+            //alert("测试异步")
+        }
+    </script>
+</head>
+<style type="text/css">
+    .head{
+        width: 100%;
+        height: 50px;
+        background-color: darkgray;
+    }
+    .body{
+        width: 100%;
+        height: 500px;
+        background-color: honeydew;
+    }
+    .body-1{
+        width: 400px;
+        height: 200px;
+        margin: 50px auto;
+    }
+</style>
+<body>
+
+
+<div id="one">
+    <div class="head"></div>
+    <div class="body">
+
+        </div>
+        <div class="body-2">
+            <input type="text" id="userId">
+            <button onclick="method();">获取</button>
+            <div>名字：<span id="name"></span></div>
+            <div>年龄：<span id="age"></span></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

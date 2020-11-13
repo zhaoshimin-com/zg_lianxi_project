@@ -1,0 +1,30 @@
+server:
+  port: 8088
+
+ #ģ���Ȳ��𡢽��� thymeleaf ����
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    # 取消模板文件缓存
+    cache: false
+
+  #设定thymeleaf文件路径 默认为src/main/resources/templates
+  freemarker:
+    template-loader-path: classpath:/templates
+
+    #设定静态文件路径，js,css等
+  mvc:
+    static-path-pattern: /static/**
+
+  servlet:
+    multipart:
+      # 设置单个文件大小
+      max-file-size: 500MB
+      # 设置单次请求文件的总大小
+      max-request-size: 500MB
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/student?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
